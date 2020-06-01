@@ -5,16 +5,19 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
     AppRoutingModule,
     BrowserAnimationsModule,
     AccordionModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
     
   ],
   providers: [],
