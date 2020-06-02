@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { EncabezadoComponent } from './encabezado/encabezado.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { EncabezadoComponent } from './encabezado/encabezado.component';
     AccordionModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    BsDropdownModule.forRoot(),
   ],
   providers: [
     AngularFireAuth,
