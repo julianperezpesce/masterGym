@@ -14,7 +14,7 @@
 
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" (key.enter)="login()" class="form-control" id="password" formControlName="password" placeholder="Password">
+          <input type="password" (keyUp.enter)="login()" class="form-control" id="password" formControlName="password" placeholder="Password">
         </div>
         
         <button type="submit" [disabled]="!formularioLogin.valid" class="btn btn-primary" (click)="login()">Ingresar</button>
@@ -22,5 +22,6 @@
     </form>
     <div *ngIf="!datosCorrectos" class="alert alert-warning" role="alert">
       Usuario o contraseña incorrecta
+      {{ datosErroneo }}
     </div>
 </div>
