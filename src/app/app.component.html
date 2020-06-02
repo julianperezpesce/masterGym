@@ -2,12 +2,37 @@
   <h1>Hello {{ usuario.email }}!</h1>
   <button (click)="logout()">Logout</button>
 </div>
-
-<ng-template #showLogin>
-  <div *ngIf="cargando"> 
-    Cargando...
-  </div>
-  <app-login *ngIf="!cargando"></app-login>
-</ng-template>
+<div class="container mt-15">
+  <ng-template #showLogin>
+    <div *ngIf="cargando" class="text-center"> 
+      <div class="cssload-loading">
+        <div class="cssload-finger cssload-finger-1">
+          <div class="cssload-finger-item">
+            <span></span><i></i>
+          </div>
+        </div>
+        <div class="cssload-finger cssload-finger-2">
+          <div class="cssload-finger-item">
+            <span></span><i></i>
+          </div>
+        </div>
+        <div class="cssload-finger cssload-finger-3">
+          <div class="cssload-finger-item">
+            <span></span><i></i>
+          </div>
+        </div>
+        <div class="cssload-finger cssload-finger-4">
+          <div class="cssload-finger-item">
+            <span></span><i></i>
+          </div>
+        </div>
+        <div class="cssload-last-finger">
+          <div class="cssload-last-finger-item"><i></i></div>
+        </div>
+      </div>
+    </div>
+    <app-login *ngIf="!cargando"></app-login>
+  </ng-template>
+</div>
 
 <router-outlet></router-outlet>
