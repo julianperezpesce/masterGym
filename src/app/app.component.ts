@@ -13,7 +13,8 @@ export class AppComponent {
   constructor(public afAuth: AngularFireAuth) {
   }
   login() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    // this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.afAuth.auth.signInWithEmailAndPassword('estrotococoa@gmail.com', 'KickBOXING2614');
   }
   logout() {
     this.afAuth.auth.signOut();
