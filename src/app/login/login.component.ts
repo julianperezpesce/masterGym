@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   formularioLogin: FormGroup;
-  constructor(private creadorFormulario: FormBuilder) { }
+  constructor(private creadorFormulario: FormBuilder, public afAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
     this.formularioLogin = this.creadorFormulario.group({
