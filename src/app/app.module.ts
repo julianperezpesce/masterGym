@@ -9,6 +9,7 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { LoginComponent } from './login/login.component';
     BrowserAnimationsModule,
     AccordionModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule,
     
   ],
   providers: [
