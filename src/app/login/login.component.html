@@ -26,7 +26,12 @@
         <button type="submit" [disabled]="!formularioLogin.valid" class="btn btn-primary" (click)="login()">Ingresar</button>
       
     </form>
+
     <div *ngIf="!datosCorrectos" class="alert alert-warning" role="alert">
       {{ datosErroneo }}      
     </div>
+
+    <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#cf1793" type = "ball-atom" [fullScreen] = "true">
+      <p style="color: white" > Cargando... </p>
+    </ngx-spinner>
 </div>
