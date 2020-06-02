@@ -33,11 +33,10 @@ export class LoginComponent implements OnInit {
       }).catch((error)=>{
         this.datosCorrectos = false;
         this.datosErroneo = error.message;
-      })
+      });
     }else{
       this.datosCorrectos = false;
       this.datosErroneo = "Usuario o contraseña incorrecta";
-
     }
   }
 
