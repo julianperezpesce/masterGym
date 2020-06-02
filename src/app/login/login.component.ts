@@ -21,13 +21,15 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.afAuth.auth.signInWithEmailAndPassword(
-      this.formularioLogin.value.email,
-      this.formularioLogin.value.password
-    ).then((usuario)=>{
-      console.log(usuario);
-      
-    });
+    if (this.formularioLogin.valid) {
+      this.afAuth.auth.signInWithEmailAndPassword(
+        this.formularioLogin.value.email,
+        this.formularioLogin.value.password
+      ).then((usuario)=>{
+        console.log(usuario);
+        
+      });
+    }
   }
 
 }
