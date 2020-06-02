@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase';
+import { User } from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +9,15 @@ import * as firebase from 'firebase';
 })
 export class AppComponent {
   title = 'masterGym';
+  usuario: User
+  cargando: boolean = true;
 
   constructor(public afAuth: AngularFireAuth) {
+      this.afAuth.user.subscribe((usuario)=>{
+        this.cargando = false;
+        this.usuario = usuario;          
+      })
+      
   }
   login() {
     // this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
