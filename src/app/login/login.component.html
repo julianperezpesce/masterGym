@@ -20,4 +20,7 @@
         <button type="submit" [disabled]="!formularioLogin.valid" class="btn btn-primary" (click)="login()">Ingresar</button>
       
     </form>
+    <div *ngIf="!datosCorrectos" class="alert alert-warning" role="alert">
+      Usuario o contraseña incorrecta
+    </div>
 </div>

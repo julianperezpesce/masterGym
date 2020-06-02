@@ -9,6 +9,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class LoginComponent implements OnInit {
   formularioLogin: FormGroup;
+  datosCorrectos: boolean = true;
   constructor(private creadorFormulario: FormBuilder, public afAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
 
   login(){
     if (this.formularioLogin.valid) {
+      this.datosCorrectos = true;
       this.afAuth.auth.signInWithEmailAndPassword(
         this.formularioLogin.value.email,
         this.formularioLogin.value.password
@@ -29,6 +31,8 @@ export class LoginComponent implements OnInit {
         console.log(usuario);
         
       });
+    }else{
+      this.datosCorrectos = false;
     }
   }
 
