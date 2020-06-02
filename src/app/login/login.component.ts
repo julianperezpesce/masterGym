@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       }).catch((error)=>{
         this.datosCorrectos = false;
         this.datosErroneo = error.message;
+        this.spinner.hide();
       });
     }else{
       this.datosCorrectos = false;
