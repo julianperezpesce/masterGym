@@ -20,4 +20,11 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  login(){
+    this.afAuth.auth.signInWithEmailAndPassword(
+      this.formularioLogin.value.email,
+      this.formularioLogin.value.password
+    );
+  }
+
 }
