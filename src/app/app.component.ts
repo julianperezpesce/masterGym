@@ -18,15 +18,6 @@ export class AppComponent {
         this.cargando = false;
         this.usuario = usuario; 
        //}, 0000);         
-      })
-      
+      })      
   }
-  login() {
-    // this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    this.afAuth.auth.signInWithEmailAndPassword('estrotococoa@gmail.com', 'KickBOXING2614');
-  }
-  logout() {
-    this.afAuth.auth.signOut();
-  }
-
 }
