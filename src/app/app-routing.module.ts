@@ -4,8 +4,8 @@ import { ListadoClientesComponent } from './listado-clientes/listado-clientes.co
 
 
 const routes: Routes = [
-  {path: '/listado-clientes', component: ListadoClientesComponent},
-  
+  {path: 'listado-clientes', component: ListadoClientesComponent},
+
 ];
 
 @NgModule({
