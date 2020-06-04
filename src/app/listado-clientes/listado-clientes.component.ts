@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-listado-clientes',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listado-clientes.component.scss']
 })
 export class ListadoClientesComponent implements OnInit {
+  clientes: any[] = new Array<any>();
 
-  constructor() { }
+  constructor(private firestore: AngularFirestore) { 
+    this.firestore.collection('clientes').valueChanges().subscribe((resultado)=>{
+      this.clientes = resultado;
+    })
+  }
 
   ngOnInit(): void {
   }
