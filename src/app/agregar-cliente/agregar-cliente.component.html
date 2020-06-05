@@ -2,16 +2,26 @@
     <form [formGroup]="formularioCliente">
         <div class="row">
             <div class="form-group col-sm">
-            <label for="">Nombre</label>
-            <input type="text" class="form-control" formControlName="nombre" placeholder="Ingrese el nombre">          
+                <label for="">Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre" placeholder="Ingrese el nombre">          
+                <div *ngIf="formularioCliente.controls['nombre'].invalid && formularioCliente.controls['nombre'].dirty" class="alert alert-danger" role="alert">
+                    <span *ngIf="formularioCliente.controls['nombre'].errors.required">Ingrese el nombre</span>
+                </div>
             </div>
             <div class="form-group col-sm">
                 <label for="">Apellido</label>
                 <input type="text" class="form-control" formControlName="apellido" placeholder="Ingrese el apellido">          
+                <div *ngIf="formularioCliente.controls['apellido'].invalid && formularioCliente.controls['apellido'].dirty" class="alert alert-danger" role="alert">
+                    <span *ngIf="formularioCliente.controls['apellido'].errors.required">Ingrese el apellido</span>
+                </div>
             </div>
             <div class="form-group col-sm">
                 <label for="">Email</label>
                 <input type="email" class="form-control" formControlName="email" placeholder="contact@email.com">          
+                <div *ngIf="formularioCliente.controls['email'].invalid && formularioCliente.controls['email'].dirty" class="alert alert-danger" role="alert">
+                    <span *ngIf="formularioCliente.controls['email'].errors.required">Ingrese su dirección de email</span>
+                    <span *ngIf="formularioCliente.controls['email'].errors.email">Dirección de correo incorrecta</span>
+                </div>
             </div>
         </div>
         <br>
@@ -28,6 +38,9 @@
             <div class="form-group col-sm">
                 <label for="">Fecha de nacimiento</label>
                 <input type="date" class="form-control" formControlName="fechaNacimiento" placeholder="Fecha de nacimiento">          
+                <div *ngIf="formularioCliente.controls['fechaNacimiento'].invalid && formularioCliente.controls['fechaNacimiento'].dirty" class="alert alert-danger" role="alert">
+                    <span *ngIf="formularioCliente.controls['fechaNacimiento'].errors.required">Ingrese la fecha de nacimiento</span>
+                </div>
             </div>
         </div>
         <br>
@@ -36,6 +49,9 @@
             <div class="form-group col-sm">
                 <label for="">Foto del Cliente</label>
                 <input type="file" class="form-control-file" formControlName="imgUrl" placeholder="Archivo de imagen">          
+                <div *ngIf="formularioCliente.controls['imgUrl'].invalid && formularioCliente.controls['imgUrl'].dirty" class="alert alert-danger" role="alert">
+                    <span *ngIf="formularioCliente.controls['imgUrl'].errors.required">Ingrese la imagen del cliente</span>
+                </div>
             </div>
             <div class="col-sm-12">
                 <progressbar [value]="55"></progressbar>

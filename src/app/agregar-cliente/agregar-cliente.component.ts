@@ -28,7 +28,7 @@ export class AgregarClienteComponent implements OnInit {
   }
 
   agregar(){
-    
+    this.formularioCliente.value = 
   }
 
 }
