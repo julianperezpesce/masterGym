@@ -48,13 +48,13 @@
         <div class="row">
             <div class="form-group col-sm">
                 <label for="">Foto del Cliente</label>
-                <input type="file" class="form-control-file" formControlName="imgUrl" placeholder="Archivo de imagen">          
+                <input type="file" (change)="subirImagen($event)" class="form-control-file" formControlName="imgUrl" placeholder="Archivo de imagen">          
                 <div *ngIf="formularioCliente.controls['imgUrl'].invalid && formularioCliente.controls['imgUrl'].dirty" class="alert alert-danger" role="alert">
                     <span *ngIf="formularioCliente.controls['imgUrl'].errors.required">Ingrese la imagen del cliente</span>
                 </div>
             </div>
             <div class="col-sm-12">
-                <progressbar [value]="55"></progressbar>
+                <progressbar [value]="porcentajeImagen"> {{porcentajeImagen}}% </progressbar>
             </div>            
         </div>
         
