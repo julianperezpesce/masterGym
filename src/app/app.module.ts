@@ -36,7 +36,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     FormsModule,
     NgxSpinnerModule,
     BsDropdownModule.forRoot(),
-    ProgressbarModule,
+    ProgressbarModule.forRoot(),
     
   ],
   providers: [
