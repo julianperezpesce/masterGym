@@ -27,4 +27,8 @@ export class AgregarClienteComponent implements OnInit {
     })
   }
 
+  agregar(){
+    
+  }
+
 }

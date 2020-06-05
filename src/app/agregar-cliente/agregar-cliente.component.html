@@ -1,47 +1,47 @@
 <div class="container mt-5">
-    <form>
+    <form [formGroup]="formularioCliente">
         <div class="row">
             <div class="form-group col-sm">
-            <label for="name">Nombre</label>
-            <input type="text" class="form-control" id="name" placeholder="Ingrese el nombre">          
+            <label for="">Nombre</label>
+            <input type="text" class="form-control" formControlName="nombre" placeholder="Ingrese el nombre">          
             </div>
             <div class="form-group col-sm">
-                <label for="lastName">Apellido</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Ingrese el apellido">          
+                <label for="">Apellido</label>
+                <input type="text" class="form-control" formControlName="apellido" placeholder="Ingrese el apellido">          
             </div>
             <div class="form-group col-sm">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="contact@email.com">          
+                <label for="">Email</label>
+                <input type="email" class="form-control" formControlName="email" placeholder="contact@email.com">          
             </div>
         </div>
         <br>
         <br>
         <div class="row">
             <div class="form-group col-sm">
-                <label for="DNI">DNI</label>
-                <input type="text" class="form-control" id="DNI" placeholder="12345678">          
+                <label for="">DNI</label>
+                <input type="text" class="form-control" formControlName="dni" placeholder="12345678">          
             </div>
             <div class="form-group col-sm">
-                <label for="telefono">Teléfono</label>
-                <input type="tel" class="form-control" id="telefono" placeholder="011-4123456">          
+                <label for="">Teléfono</label>
+                <input type="tel" class="form-control" formControlName="telefono" placeholder="011-4123456">          
             </div>              
             <div class="form-group col-sm">
-                <label for="fechaNacimiento">Fecha de nacimiento</label>
-                <input type="date" class="form-control" id="fechaNacimiento" placeholder="Fecha de nacimiento">          
+                <label for="">Fecha de nacimiento</label>
+                <input type="date" class="form-control" formControlName="fechaNacimiento" placeholder="Fecha de nacimiento">          
             </div>
         </div>
         <br>
         <br>
         <div class="row">
             <div class="form-group col-sm">
-                <label for="imgUrl">Foto del Cliente</label>
-                <input type="file" class="form-control-file" id="imgUrl" placeholder="Archivo de imagen">          
+                <label for="">Foto del Cliente</label>
+                <input type="file" class="form-control-file" formControlName="imgUrl" placeholder="Archivo de imagen">          
             </div>
             <div class="col-sm-12">
                 <progressbar [value]="55"></progressbar>
             </div>            
         </div>
         
-        <button class="btn btn-primary float-right mt-5">Agregar cliente</button>
+        <button class="btn btn-primary float-right mt-5" (click)="agregar()">Agregar cliente</button>
     </form>
 </div>
