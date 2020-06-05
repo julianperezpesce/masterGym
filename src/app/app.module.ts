@@ -16,6 +16,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ListadoClientesComponent } from './listado-clientes/listado-clientes.component';
 import { AngularFirestore } from "@angular/fire/firestore";
 import { AgregarClienteComponent } from './agregar-cliente/agregar-cliente.component';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AgregarClienteComponent } from './agregar-cliente/agregar-cliente.compo
     FormsModule,
     NgxSpinnerModule,
     BsDropdownModule.forRoot(),
+    ProgressbarModule,
     
   ],
   providers: [
