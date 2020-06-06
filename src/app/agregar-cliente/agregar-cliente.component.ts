@@ -14,6 +14,7 @@ export class AgregarClienteComponent implements OnInit {
   porcentajeImagen: number = 0;
   urlImagen: string = '';
   esEditable: boolean = false;
+  id: string;
 
   constructor(private fb: FormBuilder, 
     private storage: AngularFireStorage,
@@ -38,10 +39,10 @@ export class AgregarClienteComponent implements OnInit {
     })
 
     //Editar Formulario
-    let id = this.activeRoute.snapshot.params.clienteID; 
-    if (id != undefined) {
+    this.id = this.activeRoute.snapshot.params.clienteID; 
+    if (this.id != undefined) {
       this.esEditable = true;      
-      this.afs.doc<any>(`clientes/${id}`).valueChanges().subscribe((cliente)=>{
+      this.afs.doc<any>(`clientes/${this.id}`).valueChanges().subscribe((cliente)=>{
         console.log(cliente);
         this.formularioCliente.setValue({
           nombre: cliente.nombre,
@@ -67,6 +68,12 @@ export class AgregarClienteComponent implements OnInit {
     })
   }
 
+  editar(){
+    this.formularioCliente.value.imgUrl = this.urlImagen;
+    this.formularioCliente.value.fechaNacimiento = new Date(this.formularioCliente.value.fechaNacimiento);
+    this.afs.doc(`cliente/${this.id}`).update(this.formularioCliente.value);
+  }
+
   subirImagen(event){
     if (event.target.files.length > 0) {
       let nombreImagen = new Date().getTime().toString();
@@ -86,5 +93,8 @@ export class AgregarClienteComponent implements OnInit {
         this.porcentajeImagen = parseInt(porcentaje.toString());      
       })      
     }
+
+    
   }
+
 }
