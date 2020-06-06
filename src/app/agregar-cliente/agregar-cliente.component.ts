@@ -34,7 +34,11 @@ export class AgregarClienteComponent implements OnInit {
 
   agregar(){
     this.formularioCliente.value.imgUrl = this.urlImagen;
-    this.afs.collection('clientes').add(this.formularioCliente.value);
+    this.formularioCliente.value.fechaNacimiento = new Date(this.formularioCliente.value.fechaNacimiento);
+    this.afs.collection('clientes').add(this.formularioCliente.value)
+    .then((mensaje)=>{
+      console.log('Registro creado');      
+    })
   }
 
   subirImagen(event){
