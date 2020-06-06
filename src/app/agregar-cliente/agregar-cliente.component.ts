@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-agregar-cliente',
@@ -73,9 +74,10 @@ export class AgregarClienteComponent implements OnInit {
     this.formularioCliente.value.imgUrl = this.urlImagen;
     this.formularioCliente.value.fechaNacimiento = new Date(this.formularioCliente.value.fechaNacimiento);
     this.afs.doc(`clientes/${this.id}`).update(this.formularioCliente.value).then((mensaje)=>{
-      console.log("Cambio realizado");
-      
-    });
+      console.log("Cambio realizado")           
+    }).catch(()=>{
+      console.log("Error");      
+    })
   }
 
   subirImagen(event){
