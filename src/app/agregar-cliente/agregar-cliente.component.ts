@@ -13,6 +13,7 @@ export class AgregarClienteComponent implements OnInit {
   formularioCliente: FormGroup;
   porcentajeImagen: number = 0;
   urlImagen: string = '';
+  esEditable: boolean = false;
 
   constructor(private fb: FormBuilder, 
     private storage: AngularFireStorage,
@@ -36,12 +37,25 @@ export class AgregarClienteComponent implements OnInit {
       imgUrl: ['', Validators.required]
     })
 
-    //Editar Formulario  
-      let id = this.activeRoute.snapshot.params.clienteID;
+    //Editar Formulario
+    let id = this.activeRoute.snapshot.params.clienteID; 
+    if (id != undefined) {
+      this.esEditable = true;      
       this.afs.doc<any>(`clientes/${id}`).valueChanges().subscribe((cliente)=>{
         console.log(cliente);
-        
+        this.formularioCliente.setValue({
+          nombre: cliente.nombre,
+          apellido: cliente.apellido,
+          email: cliente.email,
+          dni: cliente.dni,
+          fechaNacimiento: new Date(cliente.fechaNacimiento.seconds * 1000).toISOString().substring(0,10),
+          telefono: cliente.telefono,     
+          imgUrl: '',     
+        });
+
+        this.urlImagen = cliente.imgUrl;
       })
+    }       
   }
 
   agregar(){

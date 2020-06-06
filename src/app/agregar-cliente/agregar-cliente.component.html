@@ -58,6 +58,7 @@
             </div>            
         </div>
         
-        <button class="btn btn-primary float-right mt-5" [disabled]="formularioCliente.invalid" (click)="agregar()">Agregar cliente</button>
+        <button *ngIf="!esEditable" class="btn btn-primary float-right mt-5" [disabled]="formularioCliente.invalid" (click)="agregar()">Agregar cliente</button>
+        <button *ngIf="esEditable" class="btn btn-danger float-right mt-5" [disabled]="formularioCliente.invalid" (click)="agregar()">Editar cliente</button>
     </form>
 </div>
