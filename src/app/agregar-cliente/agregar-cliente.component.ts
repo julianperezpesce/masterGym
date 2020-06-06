@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-agregar-cliente',
@@ -12,13 +13,17 @@ export class AgregarClienteComponent implements OnInit {
   formularioCliente: FormGroup;
   porcentajeImagen: number = 0;
   urlImagen: string = '';
+
   constructor(private fb: FormBuilder, 
     private storage: AngularFireStorage,
-    private afs: AngularFirestore) {
+    private afs: AngularFirestore,
+    private activeRoute: ActivatedRoute) {
 
    }
 
   ngOnInit(): void {
+
+    //Crear formulario
     this.formularioCliente = this.fb.group({
       nombre:['', Validators.required],
       apellido: ['', Validators.required],
@@ -30,6 +35,13 @@ export class AgregarClienteComponent implements OnInit {
       telefono: [''],
       imgUrl: ['', Validators.required]
     })
+
+    //Editar Formulario  
+      let id = this.activeRoute.snapshot.params.clienteID;
+      this.afs.doc<any>(`clientes/${id}`).valueChanges().subscribe((cliente)=>{
+        console.log(cliente);
+        
+      })
   }
 
   agregar(){
