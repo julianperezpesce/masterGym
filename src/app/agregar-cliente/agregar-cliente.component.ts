@@ -16,7 +16,8 @@ export class AgregarClienteComponent implements OnInit {
   esEditable: boolean = false;
   id: string;
 
-  constructor(private fb: FormBuilder, 
+  constructor(
+    private fb: FormBuilder, 
     private storage: AngularFireStorage,
     private afs: AngularFirestore,
     private activeRoute: ActivatedRoute) {
@@ -43,7 +44,7 @@ export class AgregarClienteComponent implements OnInit {
     if (this.id != undefined) {
       this.esEditable = true;      
       this.afs.doc<any>(`clientes/${this.id}`).valueChanges().subscribe((cliente)=>{
-        console.log(cliente);
+        
         this.formularioCliente.setValue({
           nombre: cliente.nombre,
           apellido: cliente.apellido,
@@ -51,8 +52,8 @@ export class AgregarClienteComponent implements OnInit {
           dni: cliente.dni,
           fechaNacimiento: new Date(cliente.fechaNacimiento.seconds * 1000).toISOString().substring(0,10),
           telefono: cliente.telefono,     
-          imgUrl: '',     
-        });
+          imgUrl: ''     
+        })
 
         this.urlImagen = cliente.imgUrl;
       })
@@ -71,7 +72,10 @@ export class AgregarClienteComponent implements OnInit {
   editar(){
     this.formularioCliente.value.imgUrl = this.urlImagen;
     this.formularioCliente.value.fechaNacimiento = new Date(this.formularioCliente.value.fechaNacimiento);
-    this.afs.doc(`cliente/${this.id}`).update(this.formularioCliente.value);
+    this.afs.doc(`clientes/${this.id}`).update(this.formularioCliente.value).then((mensaje)=>{
+      console.log("Cambio realizado");
+      
+    });
   }
 
   subirImagen(event){
@@ -83,7 +87,7 @@ export class AgregarClienteComponent implements OnInit {
       const ref = this.storage.ref(filePath);
       const task = ref.put(file);
       task.then((object)=>{
-        console.log('imagen cargada');
+        console.log('Imagen cargada');
         
         ref.getDownloadURL().subscribe((url)=>{
           this.urlImagen = url;          
