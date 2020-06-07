@@ -44,8 +44,7 @@ export class AgregarClienteComponent implements OnInit {
     this.id = this.activeRoute.snapshot.params.clienteID; 
     if (this.id != undefined) {
       this.esEditable = true;      
-      this.afs.doc<any>(`clientes/${this.id}`).valueChanges().subscribe((cliente)=>{
-        
+      this.afs.doc<any>(`clientes/${this.id}`).valueChanges().subscribe((cliente)=>{        
         this.formularioCliente.setValue({
           nombre: cliente.nombre,
           apellido: cliente.apellido,
@@ -55,28 +54,40 @@ export class AgregarClienteComponent implements OnInit {
           telefono: cliente.telefono,     
           imgUrl: ''     
         })
-
         this.urlImagen = cliente.imgUrl;
       })
     }       
   }
 
-  agregar(){
-    this.formularioCliente.value.imgUrl = this.urlImagen;
+  agregar(){    
+    this.formularioCliente.value.imgUrl = this.urlImagen
     this.formularioCliente.value.fechaNacimiento = new Date(this.formularioCliente.value.fechaNacimiento);
     this.afs.collection('clientes').add(this.formularioCliente.value)
     .then((mensaje)=>{
-      console.log('Registro creado');      
+      Swal.fire({
+        title: 'Cliente agregado',        
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      });      
     })
+    
   }
 
   editar(){
     this.formularioCliente.value.imgUrl = this.urlImagen;
     this.formularioCliente.value.fechaNacimiento = new Date(this.formularioCliente.value.fechaNacimiento);
     this.afs.doc(`clientes/${this.id}`).update(this.formularioCliente.value).then((mensaje)=>{
-      console.log("Cambio realizado")           
+      Swal.fire({
+        title: 'Cliente editado',        
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      });           
     }).catch(()=>{
-      console.log("Error");      
+      Swal.fire({
+        title: 'Error',        
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });      
     })
   }
 
@@ -85,7 +96,7 @@ export class AgregarClienteComponent implements OnInit {
       let nombreImagen = new Date().getTime().toString();
       const file = event.target.files[0];    
       let fileExtension = file.name.toString().substring(file.name.toString().lastIndexOf('.'))
-      const filePath = `imagenesDeClientes/${nombreImagen}${fileExtension}`;
+      const filePath = `imagenesDeClientes/${nombreImagen}.${fileExtension}`;
       const ref = this.storage.ref(filePath);
       const task = ref.put(file);
       task.then((object)=>{
