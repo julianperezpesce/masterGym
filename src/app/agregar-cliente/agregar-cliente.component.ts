@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
-import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-agregar-cliente',
@@ -83,11 +83,7 @@ export class AgregarClienteComponent implements OnInit {
         confirmButtonText: 'Ok'
       });           
     }).catch(()=>{
-      Swal.fire({
-        title: 'Error',        
-        icon: 'error',
-        confirmButtonText: 'Ok'
-      });      
+            
     })
   }
 
