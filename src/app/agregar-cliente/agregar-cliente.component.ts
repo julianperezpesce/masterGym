@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { MensajesService } from '../services/mensajes.service';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class AgregarClienteComponent implements OnInit {
     private fb: FormBuilder, 
     private storage: AngularFireStorage,
     private afs: AngularFirestore,
-    private activeRoute: ActivatedRoute) {
+    private activeRoute: ActivatedRoute,
+    private msj: MensajesService) {
 
    }
 
@@ -64,11 +66,7 @@ export class AgregarClienteComponent implements OnInit {
     this.formularioCliente.value.fechaNacimiento = new Date(this.formularioCliente.value.fechaNacimiento);
     this.afs.collection('clientes').add(this.formularioCliente.value)
     .then((mensaje)=>{
-      Swal.fire({
-        title: 'Cliente agregado',        
-        icon: 'success',
-        confirmButtonText: 'Ok'
-      });      
+      this.msj.mensajeCorrecto('Cliente agregado', 'Se ha agregado un nuevo cliente')     
     })
     
   }
@@ -77,13 +75,9 @@ export class AgregarClienteComponent implements OnInit {
     this.formularioCliente.value.imgUrl = this.urlImagen;
     this.formularioCliente.value.fechaNacimiento = new Date(this.formularioCliente.value.fechaNacimiento);
     this.afs.doc(`clientes/${this.id}`).update(this.formularioCliente.value).then((mensaje)=>{
-      Swal.fire({
-        title: 'Cliente editado',        
-        icon: 'success',
-        confirmButtonText: 'Ok'
-      });           
+      this.msj.mensajeCorrecto('Cliente editado', 'El cliente ha sido editado correctamente')          
     }).catch(()=>{
-            
+      this.msj.mensajeError('Error', 'Se ha producido un error')      
     })
   }
 
