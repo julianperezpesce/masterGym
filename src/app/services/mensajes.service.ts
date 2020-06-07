@@ -19,16 +19,15 @@ export class MensajesService {
     });
   }
 
-  mensajeCorrecto(titulo: string, texto: string){
+  mensajeAdvertencia(titulo: string, texto: string){
     Swal.fire({
       title: titulo, 
       text: texto,     
-      icon: "success",
+      icon: "warning",
       confirmButtonText: 'Aceptar'
     });
   }
 
-  
   mensajeError(titulo: string, texto: string){
     Swal.fire({
       title: titulo,  
