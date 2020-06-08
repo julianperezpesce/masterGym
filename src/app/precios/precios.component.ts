@@ -21,4 +21,13 @@ export class PreciosComponent implements OnInit {
     })
   }
 
+  agregar(){
+    console.log(this.formularioPrecios.value);
+    
+  }
+
+  editar(){
+
+  }
+
 }

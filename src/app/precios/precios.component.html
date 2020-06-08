@@ -8,29 +8,29 @@
         </div>
         <div class="col-sm-4">
             <h4>Agregar/Editar</h4>
-            <form action="">
+            <form [formGroup]="formularioPrecios">
                 <div class="form-group">
                     <label for="my-input">Nombre</label>
-                    <input id="my-input" class="form-control" type="text" name="">
+                    <input formControlName="nombre" class="form-control" type="text" name="">
                 </div>
                 <div class="form-group">
                     <label for="my-input">Costo</label>
-                    <input id="my-input" class="form-control" type="number" name="">
+                    <input formControlName="costo" class="form-control" type="number" name="">
                 </div>
                 <div class="form-group">
                     <label for="my-input">Cantidad</label>
-                    <input id="my-input" class="form-control" type="number" name="">
+                    <input formControlName="cantidad" class="form-control" type="number" name="">
                 </div>
                 <div class="form-group">
                     <label for="my-input">Tipo de Suscripción</label>                    
-                    <select name="" id="" class="form-control" >
+                    <select formControlName="tipoSuscripcion" class="form-control" >
                         <option value="1">Mensual</option>
                         <option value="2">Semestral</option>
                         <option value="3">Anual</option>
                     </select>                       
                 </div>
-                <button class="btn btn-primary">Aceptar</button>
-                <button class="btn btn-danger">Editar</button>
+                <button class="btn btn-primary" [disabled]="formularioPrecios.invalid" (click)="agregar()">Aceptar</button>
+                <button class="btn btn-danger" [disabled]="formularioPrecios.invalid" (click)="editar()">Editar</button>
             </form>
         </div>
     </div>
