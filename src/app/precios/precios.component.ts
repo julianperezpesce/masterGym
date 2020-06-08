@@ -13,6 +13,8 @@ export class PreciosComponent implements OnInit {
 
   formularioPrecios: FormGroup;
   precios: Precios[] = new Array<Precios>();
+  esEditar: boolean = false;
+  id: string;
 
   constructor(
     private fb: FormBuilder,
@@ -49,12 +51,14 @@ export class PreciosComponent implements OnInit {
   }
 
   modificarPrecio(precio: Precios){
+    this.esEditar = true;
     this.formularioPrecios.setValue({
       nombre: precio.nombre,
       costo: precio.costo,
       cantidad: precio.cantidad,
       tipoSuscripcion: precio.tipoSuscripcion,      
     })
+    this.id = precio.id;
   }
 
   editar(){

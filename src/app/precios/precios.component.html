@@ -31,8 +31,8 @@
                         <option value="3">Anual</option>
                     </select>                       
                 </div>
-                <button class="btn btn-primary" [disabled]="formularioPrecios.invalid" (click)="agregar()">Aceptar</button>
-                <button class="btn btn-danger" [disabled]="formularioPrecios.invalid" (click)="editar()">Editar</button>
+                <button *ngIf="!esEditar" class="btn btn-primary" [disabled]="formularioPrecios.invalid" (click)="agregar()">Aceptar</button>
+                <button *ngIf="esEditar" class="btn btn-danger" [disabled]="formularioPrecios.invalid" (click)="editar()">Editar</button>
             </form>
         </div>
     </div>
