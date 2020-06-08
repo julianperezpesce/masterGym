@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { stringify } from 'querystring';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-precios',
@@ -10,7 +10,7 @@ import { stringify } from 'querystring';
 export class PreciosComponent implements OnInit {
 
   formularioPrecios: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private afs: AngularFirestore) { }
 
   ngOnInit(): void {
     this.formularioPrecios = this.fb.group({
