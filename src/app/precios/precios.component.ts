@@ -29,7 +29,8 @@ export class PreciosComponent implements OnInit {
   agregar(){
     this.afs.collection('precios').add(this.formularioPrecios.value)
       .then(()=>{
-        this.msj.mensajeCorrecto('Suscripcion','Se ha agregado correctamente');        
+        this.msj.mensajeCorrecto('Suscripcion','Se ha agregado correctamente'); 
+        this.formularioPrecios.reset();       
       }).catch(()=>{
         this.msj.mensajeError('Error', 'Se ha producido un error');
       })
