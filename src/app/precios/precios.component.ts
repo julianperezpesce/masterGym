@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MensajesService } from '../services/mensajes.service';
 
 @Component({
   selector: 'app-precios',
@@ -10,7 +11,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class PreciosComponent implements OnInit {
 
   formularioPrecios: FormGroup;
-  constructor(private fb: FormBuilder, private afs: AngularFirestore) { }
+  constructor(
+    private fb: FormBuilder,
+    private afs: AngularFirestore,
+    private msj: MensajesService,
+    ) { }
 
   ngOnInit(): void {
     this.formularioPrecios = this.fb.group({
@@ -22,8 +27,13 @@ export class PreciosComponent implements OnInit {
   }
 
   agregar(){
-    console.log(this.formularioPrecios.value);
-    
+    this.afs.collection('precios').add(this.formularioPrecios.value)
+      .then(()=>{
+        this.msj.mensajeCorrecto('Suscripcion','Se ha agregado correctamente');        
+      }).catch(()=>{
+        this.msj.mensajeError('Error', 'Se ha producido un error');
+      })
+        
   }
 
   editar(){
