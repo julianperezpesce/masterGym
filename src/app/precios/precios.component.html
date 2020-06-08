@@ -3,7 +3,7 @@
         <div class="col-sm-8">
             <h4>Precios</h4>
             <ul>
-                <li *ngFor="let precio of precios"> {{ precio.nombre }} </li>
+                <li *ngFor="let precio of precios" (click)="modificarPrecio(precio)"> {{ precio.nombre }} {{ precio.costo | currency}} </li>
             </ul>
         </div>
         <div class="col-sm-4">

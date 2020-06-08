@@ -44,12 +44,17 @@ export class PreciosComponent implements OnInit {
         this.formularioPrecios.reset();       
       }).catch(()=>{
         this.msj.mensajeError('Error', 'Se ha producido un error');
-      })
-        
+      })        
+  }
+
+  modificarPrecio(precio){
+
   }
 
   editar(){
 
   }
+
+  
 
 }
