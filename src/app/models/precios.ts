@@ -4,7 +4,7 @@ export class Precios {
     id: string;
     nombre: string;
     costo: number;
-    duracion: number;
+    cantidad: number;
     tipoSuscripcion: number;
     ref: DocumentReference;
 }

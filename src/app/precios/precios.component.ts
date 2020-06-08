@@ -49,7 +49,12 @@ export class PreciosComponent implements OnInit {
   }
 
   modificarPrecio(precio: Precios){
-
+    this.formularioPrecios.setValue({
+      nombre: precio.nombre,
+      costo: precio.costo,
+      cantidad: precio.cantidad,
+      tipoSuscripcion: precio.tipoSuscripcion,      
+    })
   }
 
   editar(){
