@@ -11,6 +11,8 @@ import { MensajesService } from '../services/mensajes.service';
 export class PreciosComponent implements OnInit {
 
   formularioPrecios: FormGroup;
+  precios: any[] = new Array<any>();
+
   constructor(
     private fb: FormBuilder,
     private afs: AngularFirestore,
@@ -23,6 +25,15 @@ export class PreciosComponent implements OnInit {
       costo: ['', Validators.required],
       cantidad: ['', Validators.required],
       tipoSuscripcion: ['', Validators.required]
+    })
+
+    this.afs.collection('precios').get().subscribe((resultado)=>{
+      resultado.docs.forEach((dato)=>{
+        let precio = dato.data();
+        precio.id = dato.id;
+        precio.ref = dato.ref;
+        this.precios.push(precio);
+      })
     })
   }
 

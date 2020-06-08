@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-sm-8">
             <h4>Precios</h4>
-            <li>Suscripción Mensual</li>
-            <li>Suscripción Semestral</li>
-            <li>Suscripción Anual</li>
+            <ul>
+                <li *ngFor="let precio of precios"> {{ precio.nombre }} </li>
+            </ul>
         </div>
         <div class="col-sm-4">
             <h4>Agregar/Editar</h4>
