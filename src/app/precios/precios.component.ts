@@ -29,8 +29,20 @@ export class PreciosComponent implements OnInit {
       cantidad: ['', Validators.required],
       tipoSuscripcion: ['', Validators.required]
     })
-
+    
     this.afs.collection<Precios>('precios').get().subscribe((resultado)=>{
+      resultado.docs.forEach((dato)=>{
+        let precio = dato.data() as Precios; //sin as Precios da error en push(precio)
+        precio.id = dato.id;
+        precio.ref = dato.ref;
+        this.precios.push(precio);
+      })
+    })
+  }
+
+  mostrarPrecios(){
+    this.afs.collection<Precios>('precios').get().subscribe((resultado)=>{
+      this.precios.length = 0;
       resultado.docs.forEach((dato)=>{
         let precio = dato.data() as Precios; //sin as Precios da error en push(precio)
         precio.id = dato.id;
@@ -44,7 +56,8 @@ export class PreciosComponent implements OnInit {
     this.afs.collection<Precios>('precios').add(this.formularioPrecios.value)
       .then(()=>{
         this.msj.mensajeCorrecto('Suscripcion','Se ha agregado correctamente'); 
-        this.formularioPrecios.reset();       
+        this.formularioPrecios.reset();   
+        this.mostrarPrecios();    
       }).catch(()=>{
         this.msj.mensajeError('Error', 'Se ha producido un error');
       })        
@@ -62,7 +75,15 @@ export class PreciosComponent implements OnInit {
   }
 
   editar(){
-
+    this.afs.doc(`precios/${this.id}`).update(this.formularioPrecios.value)
+    .then(()=>{
+      this.msj.mensajeCorrecto('Modificación', 'Se ha modificado correctamente');
+      this.formularioPrecios.reset();
+      this.esEditar = false;
+      this.mostrarPrecios();
+    }).catch(()=>{
+      this.msj.mensajeError('Error', 'se ha producido un error');
+    })
   }
 
   
