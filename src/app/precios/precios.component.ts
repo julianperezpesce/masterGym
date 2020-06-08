@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MensajesService } from '../services/mensajes.service';
+import { Precios } from '../models/precios';
 
 @Component({
   selector: 'app-precios',
@@ -11,7 +12,7 @@ import { MensajesService } from '../services/mensajes.service';
 export class PreciosComponent implements OnInit {
 
   formularioPrecios: FormGroup;
-  precios: any[] = new Array<any>();
+  precios: Precios[] = new Array<Precios>();
 
   constructor(
     private fb: FormBuilder,
@@ -27,9 +28,9 @@ export class PreciosComponent implements OnInit {
       tipoSuscripcion: ['', Validators.required]
     })
 
-    this.afs.collection('precios').get().subscribe((resultado)=>{
+    this.afs.collection<Precios>('precios').get().subscribe((resultado)=>{
       resultado.docs.forEach((dato)=>{
-        let precio = dato.data();
+        let precio = dato.data() as Precios; //sin as Precios da error en push(precio)
         precio.id = dato.id;
         precio.ref = dato.ref;
         this.precios.push(precio);
@@ -38,7 +39,7 @@ export class PreciosComponent implements OnInit {
   }
 
   agregar(){
-    this.afs.collection('precios').add(this.formularioPrecios.value)
+    this.afs.collection<Precios>('precios').add(this.formularioPrecios.value)
       .then(()=>{
         this.msj.mensajeCorrecto('Suscripcion','Se ha agregado correctamente'); 
         this.formularioPrecios.reset();       
@@ -47,7 +48,7 @@ export class PreciosComponent implements OnInit {
       })        
   }
 
-  modificarPrecio(precio){
+  modificarPrecio(precio: Precios){
 
   }
 
