@@ -21,6 +21,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { MensajesService } from './services/mensajes.service';
 import { PreciosComponent } from './precios/precios.component';
 import { InscripcionComponent } from './inscripcion/inscripcion.component';
+import { SeleccionarClienteComponent } from './seleccionar-cliente/seleccionar-cliente.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { InscripcionComponent } from './inscripcion/inscripcion.component';
     AgregarClienteComponent,
     PreciosComponent,
     InscripcionComponent,
+    SeleccionarClienteComponent,
   ],
   imports: [
     BrowserModule,    
