@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Inscripción <span class="sr-only">(current)</span></a>
+                <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" >Inscripción </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Ver inscripciones <span class="sr-only">(current)</span></a>
@@ -21,7 +21,7 @@
                 <div class="dropdown-menu" *dropdownMenu aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" [routerLink]="['/agregar-cliente']" routerLinkActive="active" >Agregar Clientes</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/listado-clientes']" routerLinkActive="router-link-active" >Ver Clientes</a>
+                    <a class="dropdown-item" [routerLink]="['/listado-clientes']" routerLinkActive="active">Ver Clientes</a>
                 </div>
             </li> 
             <li class="nav-item">
