@@ -13,6 +13,7 @@ export class SeleccionarClienteComponent implements OnInit {
   clientes: Clientes[] = new Array<Clientes>();
   @Input('nombre') nombre: string;
   @Output('clienteSeleccionado') clienteSeleccionado = new EventEmitter();
+  @Output('clienteCancelado') clienteCancelado = new EventEmitter();
   
   constructor(private afs: AngularFirestore) { }
 
