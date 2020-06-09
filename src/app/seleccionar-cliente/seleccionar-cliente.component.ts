@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Clientes } from '../models/clientes';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-seleccionar-cliente',
@@ -11,6 +12,7 @@ export class SeleccionarClienteComponent implements OnInit {
 
   clientes: Clientes[] = new Array<Clientes>();
   @Input('nombre') nombre: string;
+  @Output('clienteSeleccionado') clienteSeleccionado = new EventEmitter();
   
   constructor(private afs: AngularFirestore) { }
 
