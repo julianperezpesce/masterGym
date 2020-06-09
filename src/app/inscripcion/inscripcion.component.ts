@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-inscripcion',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InscripcionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private afs: AngularFirestore) { }
 
   ngOnInit(): void {
+    this.afs.collection('')
   }
 
 }
