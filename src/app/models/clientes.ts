@@ -10,4 +10,5 @@ export class Clientes{
     telefono: number;
     dni: string;
     ref: DocumentReference;
+    visible: boolean;
 }
