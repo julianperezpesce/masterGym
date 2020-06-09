@@ -4,9 +4,9 @@
         <input class="form-control" type="text" placeholder="Buscar cliente">
     </div>
     
-    <ul class="list-group">
-        <a class="list-group-item list-group-item-action" >Cliente 1</a>
-        <a class="list-group-item list-group-item-action " >Cliente 2</a>
+    <ul class="list-group" >
+        <a class="list-group-item list-group-item-action" 
+        *ngFor="let cliente of clientes"> {{ cliente.nombre }} </a>
     </ul>
 </div>
 
