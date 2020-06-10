@@ -15,7 +15,7 @@ export class VerInscripcionesComponent implements OnInit {
   ngOnInit(): void {
     this.afs.collection('inscripciones').get().subscribe((resultado)=>{
       resultado.forEach((inscripcion)=>{
-        console.log(inscripcion);
+        console.log(inscripcion.data());
         
       })
     })
