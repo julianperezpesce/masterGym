@@ -23,15 +23,15 @@
             </div>
             <div class="form-group">
                 <label for="">Subtotal</label>
-                <input type="number" class="form-control" [value]="inscripcion.subTotal | currency" disabled>
+                <input type="number" class="form-control" [value]="inscripcion.subTotal" disabled>
             </div>
             <div class="form-group">
                 <label for="">IVA</label>
-                <input type="number" class="form-control" [value]="inscripcion.iva | currency" disabled>
+                <input type="number" class="form-control" [value]="inscripcion.iva" disabled>
             </div>
             <div class="form-group">
                 <label for="">Total</label>
-                <input type="number" class="form-control" [value]="inscripcion.total | currency" disabled>
+                <input type="number" class="form-control" [value]="inscripcion.total" disabled>
             </div>
 
             <button class="btn btn-primary" (click)="guardar()">Guardar</button>
