@@ -3,6 +3,7 @@ import { Clientes } from '../models/clientes';
 import { Inscripcion } from '../models/inscripcion';
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Precios } from '../models/precios';
+import { MensajesService } from '../services/mensajes.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class InscripcionComponent implements OnInit {
   precios: Precios[] = new Array<Precios>();
   precioSeleccionado: Precios = new Precios();
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(private afs: AngularFirestore, private msj: MensajesService) { }
 
   ngOnInit(): void {
     //Setting Firestore database
@@ -61,11 +62,13 @@ export class InscripcionComponent implements OnInit {
          this.inscripcion = new Inscripcion();
          this.clienteSeleccionado = new Clientes();
          this.precioSeleccionado = new Precios();
+         this.msj.mensajeCorrecto('Suscripción', 'Se ha registrado correctamente')
+
       })
       
     } else {
       console.log(this.inscripcion.validar().mensaje);
-      
+      this.msj.mensajeAdvertencia('Advertencia', 'Registro incompleto');
     }
   }
 
