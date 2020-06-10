@@ -15,11 +15,11 @@
             </div>
             <div class="form-group">
                 <label for="">Fecha de Inscripción</label>
-                <input type="text" class="form-control" [value]="inscripcion.fecha | date" disabled>
+                <input type="text" class="form-control" [value]="inscripcion.fecha | date: 'dd MMMM yyyy'" disabled>
             </div>
             <div class="form-group">
                 <label for="">Fecha de finalización</label>
-                <input type="text" class="form-control" [value]="inscripcion.fechaDeBaja | date" disabled>
+                <input type="text" class="form-control" [value]="inscripcion.fechaDeBaja | date: 'dd MMMM yyyy' " disabled>
             </div>
 
             <button class="btn btn-primary" (click)="guardar()">Guardar</button>
