@@ -9,5 +9,13 @@ export class Inscripcion {
     iva: number;
     total: number;
 
-    constructor(){}
+    constructor(){
+        this.fecha = this.fecha;
+        this.fechaDeBaja = this.fechaDeBaja;
+        this.cliente = this.cliente;
+        this.tipoInscripcion = this.tipoInscripcion;
+        this.subTotal = this.subTotal;
+        this.iva = this.iva;
+        this.total = this.total;
+    }
 }

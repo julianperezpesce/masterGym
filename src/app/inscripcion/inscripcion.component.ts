@@ -28,4 +28,8 @@ export class InscripcionComponent implements OnInit {
     this.inscripcion.cliente = undefined;
   }
 
+  guardar(){
+    
+  }
+
 }
