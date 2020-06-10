@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Clientes } from '../models/clientes';
+import { Inscripcion } from '../models/inscripcion';
 
 
 @Component({
@@ -8,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InscripcionComponent implements OnInit {
 
+  inscripcion: Inscripcion = new Inscripcion();
+  clienteSeleccionado: Clientes = new Clientes(); 
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  asignarCliente(cliente: Clientes){
+    this.inscripcion.cliente = cliente.ref;
+    this.clienteSeleccionado = cliente;
+  }
+
+  eliminarCliente(){
+    this.clienteSeleccionado = new Clientes();
   }
 
 }

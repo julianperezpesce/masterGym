@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Clientes } from '../models/clientes';
-import { EventEmitter } from 'events';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-seleccionar-cliente',
@@ -45,10 +45,13 @@ export class SeleccionarClienteComponent implements OnInit {
     this.clientes.forEach((cliente)=>{
       cliente.visible = false;
     })
+
+    this.clienteSeleccionado.emit(cliente)
   }
 
   cancelarCliente(){
     this.nombre = undefined;
+    this.clienteCancelado.emit();
   }
 
 }

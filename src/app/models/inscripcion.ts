@@ -8,4 +8,6 @@ export class Inscripcion {
     subTotal: number;
     iva: number;
     total: number;
+
+    constructor(){}
 }

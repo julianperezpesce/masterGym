@@ -1,7 +1,10 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-sm-6">
-            <app-seleccionar-cliente></app-seleccionar-cliente>
+            <app-seleccionar-cliente [nombre]="clienteSeleccionado.nombre"                
+                (clienteSeleccionado)="asignarCliente($event)"
+                (clienteCancelado)="eliminarCliente()">
+            </app-seleccionar-cliente>
         </div>
 
         <div class="col-sm-6">
