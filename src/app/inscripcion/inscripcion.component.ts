@@ -25,6 +25,7 @@ export class InscripcionComponent implements OnInit {
 
   eliminarCliente(){
     this.clienteSeleccionado = new Clientes();
+    this.inscripcion.cliente = undefined;
   }
 
 }
