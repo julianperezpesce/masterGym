@@ -44,7 +44,24 @@ export class InscripcionComponent implements OnInit {
 
   guardar(){
     if (this.inscripcion.validar().esValido) {
-      console.log('Guardando');
+
+      let inscripcionAgregar = {
+        fecha: this.inscripcion.fecha,
+        fechaDeBaja: this.inscripcion.fechaDeBaja,
+        cliente: this.inscripcion.cliente,
+        tipoInscripcion: this.inscripcion.tipoInscripcion,
+        subTotal: this.inscripcion.subTotal,
+        iva: this.inscripcion.iva,
+        total: this.inscripcion.total,
+      }
+
+      //Add all the data of inscripcion on Angular Firestore
+      this.afs.collection('inscripciones').add(inscripcionAgregar).then((resultado)=>{
+         console.log('Guardando');
+         this.inscripcion = new Inscripcion();
+         this.clienteSeleccionado = new Clientes();
+         this.precioSeleccionado = new Precios();
+      })
       
     } else {
       console.log(this.inscripcion.validar().mensaje);
