@@ -48,6 +48,8 @@ export class InscripcionComponent implements OnInit {
     this.precioSeleccionado = this.precios.find(x => x.id == id);
     this.inscripcion.tipoInscripcion = this.precioSeleccionado.ref
     console.log(this.precioSeleccionado);
+
+    this.inscripcion.fecha = new Date();
     
   }
 

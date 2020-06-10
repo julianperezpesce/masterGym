@@ -10,8 +10,8 @@ export class Inscripcion {
     total: number;
 
     constructor(){
-        this.fecha = this.fecha;
-        this.fechaDeBaja = this.fechaDeBaja;
+        this.fecha = null;
+        this.fechaDeBaja = null;
         this.cliente = this.cliente;
         this.tipoInscripcion = this.tipoInscripcion;
         this.subTotal = this.subTotal;

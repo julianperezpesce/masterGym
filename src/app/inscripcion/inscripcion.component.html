@@ -13,6 +13,14 @@
                     
                 </Select>
             </div>
+            <div class="form-group">
+                <label for="">Fecha de Inscripción</label>
+                <input type="text" class="form-control" [value]="inscripcion.fecha | date" disabled>
+            </div>
+            <div class="form-group">
+                <label for="">Fecha de finalización</label>
+                <input type="text" class="form-control" [value]="inscripcion.fechaDeBaja | date" disabled>
+            </div>
 
             <button class="btn btn-primary" (click)="guardar()">Guardar</button>
         </div>
