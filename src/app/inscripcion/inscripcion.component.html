@@ -8,9 +8,8 @@
             <div class="form-group">
                 <label for="">Precio</label>
                 <Select class="form-control">
-                    <option value="">Mensual</option>
-                    <option value="">Semestral</option>
-                    <option value="">Anual</option>
+                    <option *ngFor="let precio of precios"> {{ precio.nombre }} </option>
+                    
                 </Select>
             </div>
 
