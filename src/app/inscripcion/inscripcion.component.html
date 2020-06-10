@@ -5,6 +5,14 @@
                 (clienteSeleccionado)="asignarCliente($event)"
                 (clienteCancelado)="eliminarCliente()">
             </app-seleccionar-cliente>
+            <div class="form-group">
+                <label for="">Precio</label>
+                <Select class="form-control">
+                    <option value="">Mensual</option>
+                    <option value="">Semestral</option>
+                    <option value="">Anual</option>
+                </Select>
+            </div>
 
             <button class="btn btn-primary" (click)="guardar()">Guardar</button>
         </div>

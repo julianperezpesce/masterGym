@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Clientes } from '../models/clientes';
 import { Inscripcion } from '../models/inscripcion';
+import { AngularFirestore } from "@angular/fire/firestore";
+import { Precios } from '../models/precios';
 
 
 @Component({
@@ -12,10 +14,18 @@ export class InscripcionComponent implements OnInit {
 
   inscripcion: Inscripcion = new Inscripcion();
   clienteSeleccionado: Clientes = new Clientes(); 
-
-  constructor() { }
+  precios: Precios[] = new Array<Precios>();
+  constructor(private afs: AngularFirestore) { }
 
   ngOnInit(): void {
+    this.afs.collection('precios').get().subscribe((resultado)=>{
+      resultado.docs.forEach((i)=>{
+        let precio = i.data() as Precios;
+        precio.id = i.id;
+        precio.ref = i.ref;
+        this.precios.push(precio)
+      })
+    })
   }
 
   asignarCliente(cliente: Clientes){
@@ -29,7 +39,7 @@ export class InscripcionComponent implements OnInit {
   }
 
   guardar(){
-    
+
   }
 
 }
