@@ -9,7 +9,7 @@ import { Inscripcion } from '../models/inscripcion';
 })
 export class VerInscripcionesComponent implements OnInit {
 
-  inscripciones: Inscripcion[] = [];
+  inscripciones: any[] = [];
   constructor(private afs: AngularFirestore) { }
 
   ngOnInit(): void {
@@ -17,6 +17,16 @@ export class VerInscripcionesComponent implements OnInit {
       resultado.forEach((inscripcion)=>{
         console.log(inscripcion.data());
         
+        //here we get data from inscripciones
+        let inscripcionCliente = inscripcion.data();
+        inscripcionCliente.id = inscripcion.id;
+        //
+
+        //Here we get all data from client and the path
+        this.afs.doc(inscripcion.data().cliente.path).get().subscribe((cliente)=>{
+          inscripcionCliente.clienteGet = cliente.data();        
+        })
+        //
       })
     })
         
