@@ -13,15 +13,13 @@ export class VerInscripcionesComponent implements OnInit {
   constructor(private afs: AngularFirestore) { }
 
   ngOnInit(): void {
+    this.inscripciones.length = 0;
     this.afs.collection('inscripciones').get().subscribe((resultado)=>{
-      resultado.forEach((inscripcion)=>{
-        console.log(inscripcion.data());
-        
+      resultado.forEach((inscripcion)=>{        
         //here we get data from inscripciones
         let inscripcionCliente = inscripcion.data();
         inscripcionCliente.id = inscripcion.id;
         //
-
         //Here we get all data from client and the path
         this.afs.doc(inscripcion.data().cliente.path).get().subscribe((cliente)=>{
           inscripcionCliente.clienteGet = cliente.data();    
