@@ -22,7 +22,12 @@ export class VerInscripcionesComponent implements OnInit {
         //
         //Here we get all data from client and the path
         this.afs.doc(inscripcion.data().cliente.path).get().subscribe((cliente)=>{
-          inscripcionCliente.clienteGet = cliente.data();    
+          inscripcionCliente.clienteGet = cliente.data();
+          //To see the properties from inscripcionCliente & clienteGet
+          //console.log(inscripcionCliente);
+          
+          inscripcionCliente.fecha = new Date(inscripcionCliente.fecha.seconds * 1000);
+          inscripcionCliente.fechaDeBaja = new Date(inscripcionCliente.fechaDeBaja.seconds * 1000);  
           this.inscripciones.push(inscripcionCliente);    
         })
         //

@@ -9,23 +9,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+          <tr *ngFor="let inscripcion of inscripciones">
+            <th scope="row"> {{ inscripcion.clienteGet.nombre }} {{ inscripcion.clienteGet.apellido }} </th>
+            <td> {{ inscripcion.fecha | date:'dd MMMM yyyy' }} </td>
+            <td> {{ inscripcion.fechaDeBaja | date: 'dd MMMM yyyy' }} </td>
+            <td >
+                <img [src]="inscripcion.clienteGet.imgUrl" width="50px" >
+            </td>
           </tr>
         </tbody>
       </table>
